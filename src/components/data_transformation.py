@@ -77,8 +77,11 @@ class DataTransformation:
             test_df=pd.read_csv(test_path)
 
             logging.info('Reading Train and Test Complete')
-            logging.info(f'Train Dataframe Head : \n{train_df.head().to_string()}')
-            logging.info(f'Test Dataframe Head : \n{test_df.head().to_string()}')
+            # Drop rows where the target 'price' is missing
+            target_column = 'price'
+            train_df = train_df.dropna(subset=[target_column])
+            test_df = test_df.dropna(subset=[target_column])
+            logging.info(f"Dropped NaNs from target. Remaining rows: Train({len(train_df)}), Test({len(test_df)})")
 
             logging.info('Obtaining Preprocessing object')
 
