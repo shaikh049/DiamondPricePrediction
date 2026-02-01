@@ -16,6 +16,7 @@ def save_object(file_path, obj):
     except Exception as e:
         raise CustomException(e, sys)
 
+# after model trainer pipeline code
 def evaluate_model(X_train, y_train, X_test, y_test, models):
     try:
         report = {}
@@ -38,6 +39,7 @@ def evaluate_model(X_train, y_train, X_test, y_test, models):
         logging.info('Exception occurred during model training evaluation')
         raise CustomException(e, sys)
 
+# After prediction pipeline code
 def load_object(file_path):
     try:
         with open(file_path, 'rb') as file_obj:
